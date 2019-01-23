@@ -8,6 +8,7 @@ var colors = require('colors');
 var express = require('express');
 var multer = require('multer');
 var prettyjson = require('prettyjson');
+var moment = require('moment');
 
 const HOST = '0.0.0.0';
 const PORT = process.env['PORT'] || 3000;
@@ -20,9 +21,14 @@ web.set('trust proxy', true);
 
 web.post('/x/y/z', upload.single(UPLOAD_NAME), (req, res) => {
     var { query, file, params } = req;
-    var { task, profile, id, service } = query;
+    var { task, profile, id } = query;
+	var service = query['type'];
     var { fieldname, originalname, size, buffer } = file;
     console.log(`multiparts-upload: ${req.originalUrl.yellow}: ${req.headers['content-length']} bytes`);
+	console.log(`\tprofile = ${profile.magenta}`);
+	console.log(`\tid = ${id.magenta}`);
+	console.log(`\tservice = ${service.magenta}`);
+	console.log(`\ttask = ${task.magenta}`);
     zlib.gunzip(buffer, (zerr, raw) => {
         if (zerr) {
             return console.log(`failed to decompress archive ${profile}/${id}/${service}/${task}, zerr: ${zerr}`);
@@ -34,11 +40,15 @@ web.post('/x/y/z', upload.single(UPLOAD_NAME), (req, res) => {
             var tokens = line.split('\t');
             if (tokens.length === 3) {
                 var [timestamp, type, payload] = tokens;
-                timestamp = new Date(parseInt(timestamp));
-                console.log(`${timestamp}\t${type.yellow}\t${payload.gray}`);
+				var time = moment(parseInt(timestamp)).format('MMM/DD HH:mm:ss.SSS');
+                console.log(`${time.blue}\t${type.yellow}\t${payload.gray}`);
+				if (type === "stdout" || type === "stderr") {
+					var buffer = Buffer.from(payload, 'hex');
+					var line = buffer.toString();
+					console.log(`\t${line}`);
+				}
             }
         });
-        console.log(raw.toString());
     });
     res.status(200).end();
 });

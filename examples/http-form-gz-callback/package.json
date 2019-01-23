@@ -17,7 +17,8 @@
     "express": "*",
     "multer": "*",
     "colors": "*",
-    "prettyjson": "*"
+    "prettyjson": "*",
+    "moment": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {}
