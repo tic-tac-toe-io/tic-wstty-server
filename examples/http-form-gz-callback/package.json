@@ -14,11 +14,12 @@
   },
   "main": "index",
   "dependencies": {
-    "express": "*",
-    "multer": "*",
+    "body-parser": "^1.18.3",
     "colors": "*",
-    "prettyjson": "*",
-    "moment": "*"
+    "express": "*",
+    "moment": "*",
+    "multer": "*",
+    "prettyjson": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {}
