@@ -32,8 +32,8 @@ var DUMP = function (name, json) {
 
 var SHOW_REQUEST = function (purpose, req) {
     var { query, method, originalUrl, headers } = req;
-    var size = req.headers['content-length'].toString();
-    console.log(`multiparts-upload: ${method.red} ${originalUrl.yellow}: ${size.cyan} bytes`);
+    var size = headers['content-length'].toString();
+    console.log(`${purpose}: ${method.red} ${originalUrl.yellow}: ${size.cyan} bytes`);
     DUMP("QUERY-STRING", query);
 };
 
