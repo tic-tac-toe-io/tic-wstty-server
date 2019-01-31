@@ -1,0 +1,24 @@
+{
+  "name": "wstty-socketio-client",
+  "author": {
+    "name": [
+      "Yagamy"
+    ],
+    "email": "yagamy@t2t.io"
+  },
+  "description": "An example of using socket.io to connect to a Wstty server to monitor agent's connecting/disconnecting events",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "index",
+  "dependencies": {
+    "socket.io-client": "*",
+    "colors": "*",
+    "moment": "*",
+    "prettyjson": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
