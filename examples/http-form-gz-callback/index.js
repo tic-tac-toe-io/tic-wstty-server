@@ -101,6 +101,7 @@ web.post(PATH, bodyParser.json(), (req, res) => {
     SHOW_REQUEST("progress-indication", req);
     DUMP("BODY", body);
     console.log("");
+    res.status(200).end();
 });
 
 var server = http.createServer(web);
