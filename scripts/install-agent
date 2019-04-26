@@ -60,6 +60,9 @@ function initiate_settings {
 		darwin-macosx)
 			export INSTALL_PATH="~/.tictactoe/${APP}"
 			;;
+		linux-ubuntu-trusty)
+			export INSTALL_PATH="/opt/tictactoe/${APP}"
+			;;
 		*)
 			INFO "unsupported os: ${OS_NAME}, please report to yagamy@t2t.io to improve installation script"
 			exit 0
