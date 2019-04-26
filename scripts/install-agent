@@ -60,7 +60,7 @@ function initiate_settings {
 		darwin-macosx)
 			export INSTALL_PATH="~/.tictactoe/${APP}"
 			;;
-		linux-ubuntu-trusty)
+		linux-ubuntu-trusty|linux-ubuntu-bionic)
 			export INSTALL_PATH="/opt/tictactoe/${APP}"
 			;;
 		*)
