@@ -61,7 +61,11 @@ function initiate_settings {
 			export INSTALL_PATH="~/.tictactoe/${APP}"
 			;;
 		linux-ubuntu-trusty|linux-ubuntu-bionic)
-			export INSTALL_PATH="/opt/tictactoe/${APP}"
+			if [ "oneshot" == "${INSTALLATION_TYPE}" ]; then
+				export INSTALL_PATH="~/.tictactoe/${APP}"
+			else
+				export INSTALL_PATH="/opt/tictactoe/${APP}"
+			fi
 			;;
 		*)
 			INFO "unsupported os: ${OS_NAME}, please report to yagamy@t2t.io to improve installation script"
