@@ -56,13 +56,14 @@ function initiate_settings {
 	[ "" == "${RDS_AGENT_TOKEN}" ] && INFO "please specify RDS_AGENT_TOKEN environment variable" && exit 1
 	[ "" == "${RELEASE_SERVER}" ] && export RELEASE_SERVER="https://archives.t2t.io/tic-tac-toe/apps"
 	[ "" == "${INSTALLATION_TYPE}" ] && export INSTALLATION_TYPE="oneshot"
+	[ "" == "${HOME}" ] && export USERHOME="/tmp" || export USERHOME=${HOME}
 	case "${OS_NAME}" in
 		darwin-macosx)
-			export INSTALL_PATH="~/.tictactoe/${APP}"
+			export INSTALL_PATH="${USERHOME}/.tictactoe/${APP}"
 			;;
 		linux-ubuntu-trusty|linux-ubuntu-bionic)
 			if [ "oneshot" == "${INSTALLATION_TYPE}" ]; then
-				export INSTALL_PATH="~/.tictactoe/${APP}"
+				export INSTALL_PATH="${USERHOME}/.tictactoe/${APP}"
 			else
 				export INSTALL_PATH="/opt/tictactoe/${APP}"
 			fi
